@@ -66,13 +66,16 @@ public class Main {
 
         Method.displayEmployee(employees);
 
-        System.out.println("Trung lương toàn nhân viên trong công ty là: " + Method.getAverageSalary(employees));
+        System.out.println("Trung bình lương toàn nhân viên trong công ty là: " + Method.getAverageSalary(employees));
 
         System.out.println("Các nhân viên Fulltime có lương thấp hơn trung bình: ");
         Method.displayEmployeeLessThanAvgSalary(employees);
 
         System.out.println("Số lương phải trả cho tất cả nhân viên bán thời gian là: " + Method.displaySumSalaryPartTime(employees));
 
+        Method.sortSalaryFullTime(employees);
 
+        System.out.println("Thứ tự tăng dần lương của nhân viên full time: ");
+        Method.sortSalaryFullTime(employees);
     }
 }

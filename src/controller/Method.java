@@ -4,6 +4,7 @@ import model.Employee;
 import model.FullTimeEmployee;
 import model.PartTimeEmployee;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Method {
@@ -91,34 +92,55 @@ public class Method {
 
     public static double getAverageSalary(Employee[] arr) {
         double sum = 0;
-        double avg = 0;
+        double avg;
         int count = 0;
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i].getNetSalary();
             count++;
         }
-        avg = sum/count;
+        avg = sum / count;
         return avg;
     }
 
-    public static void displayEmployeeLessThanAvgSalary(Employee [] arr) {
+    public static void displayEmployeeLessThanAvgSalary(Employee[] arr) {
         for (int i = 0; i < arr.length; i++) {
-          if (arr[i] instanceof FullTimeEmployee) {
-              if (arr[i].getNetSalary() < getAverageSalary(arr)) {
-                  System.out.println(arr[i].getFullName());
-              }
-          }
+            if (arr[i] instanceof FullTimeEmployee) {
+                if (arr[i].getNetSalary() < getAverageSalary(arr)) {
+                    System.out.println(arr[i].getFullName());
+                }
+            }
         }
     }
 
-    public static double displaySumSalaryPartTime (Employee [] arr) {
+    public static double displaySumSalaryPartTime(Employee[] arr) {
         double sum = 0;
-        for (Employee e: arr
-             ) {
+        for (Employee e : arr
+        ) {
             if (e instanceof PartTimeEmployee) {
                 sum += e.getNetSalary();
             }
         }
         return sum;
+    }
+
+    public static void sortSalaryFullTime(Employee[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - 1; j++) {
+                if (arr[j] instanceof FullTimeEmployee) {
+                    if ( arr[j].getNetSalary() > arr[j+1].getNetSalary()) {
+                        FullTimeEmployee temp = (FullTimeEmployee) arr[j];
+                        arr[j] = arr [j+1];
+                        arr[j+1] = temp;
+                    }
+                }
+            }
+        }
+        int stt = 1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] instanceof FullTimeEmployee) {
+                System.out.println(stt + ". " + arr[i].getFullName());
+                stt ++;
+            }
+        }
     }
 }
